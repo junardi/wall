@@ -1,0 +1,49 @@
+<div class="container">   
+	<div class="row">
+		<div class="col-md-4">
+			<h2>Welcome to homepage {{title}}</h2>        
+			<p>Your first name is: <strong>{{ (name | async)?.first_name }}</strong></p>   
+			<p>Your last name is: <strong>{{ (name | async)?.last_name }}</strong></p>    
+			<p>Your middle name is: <strong>{{ (name | async)?.first_name }}</strong></p>   
+			<button (click)="deleteName()">Delete Visitor</button>
+		</div>   
+		<div class="col-md-5">
+			<h2>List of Items</h2>
+			<ul class="list-group" *ngFor="let item of items | async">   
+				<li class="list-group-item">       
+					{{ item.name }} <span class="pull-right"><button (click)="deleteItem(item.$key)">Delete Item</button></span>
+					<ul class="list-group" style="margin-top: 20px;" *ngIf="item.subItem"> 	
+						<li class="list-group-item" *ngFor="let sub of item.subItem | keys">    
+							{{ item.subItem[sub].subName }}    
+							<span class="pull-right"><button (click)='deleteSubItem(item.$key, sub)'>Delete Sub Item</button></span>
+						</li>
+					</ul>        
+
+					<form #f="ngForm" (ngSubmit)="addSubItem(f, item.$key)" novalidate class="form-inline">
+						<div class="form-group">
+							<label for="subItem">Sub Item</label>                               
+							<input type="text" name="subItemValue" ngModel>
+						</div>  
+						<br>
+						<button  class="btn btn-default">Add Sub Item</button>
+					</form>
+
+				</li>
+			</ul>        
+
+			<form class="form-inline">
+				<div class="form-group">
+					<label for="itemName">Item Name</label>
+					<input [(ngModel)]="itemName" (ngModelChange)="itemName = $event" name="itemName">
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="itemValue">Item Value</label>
+					<input [(ngModel)]="itemValue" (ngModelChange)="itemValue = $event" name="itemValue">
+				</div>  
+				<br>
+				<button (click)='addItem(itemName, itemValue)' class="btn btn-default">Add Item</button>
+			</form>   
+		</div>
+	</div>
+</div>
