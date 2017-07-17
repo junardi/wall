@@ -10,12 +10,14 @@ import { firebaseConfig } from './../environments/firebase.config';
 import { AppComponent } from './app.component';   
 import { KeysPipe } from './keys.pipe';
 import { HomeComponentComponent } from './home-component/home-component.component';    
-import appRoutes from "./app.routes"; 
+import { routing, appRoutingProviders } from './app.routes';
+import { LoginComponentComponent } from './login-component/login-component.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component'; 
 
 @NgModule({
   declarations: [   
     AppComponent, 
-    KeysPipe, HomeComponentComponent
+    KeysPipe, HomeComponentComponent, LoginComponentComponent, PageNotFoundComponent
   ],
   imports: [
     BrowserModule, 
@@ -25,10 +27,10 @@ import appRoutes from "./app.routes";
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFireDatabaseModule, 
     AngularFireAuthModule,    
-    appRoutes
+    routing
   ],
   providers: [  
-
+    appRoutingProviders
   ],
   bootstrap: [AppComponent]
 })
