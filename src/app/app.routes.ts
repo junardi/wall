@@ -8,10 +8,10 @@ export const routes: Routes = [
 	// path: '', redirectTo: 'login', pathMatch: 'full'
  //  },    
   { 
-	path: '', component:HomeComponentComponent  
+	  path: '', component:HomeComponentComponent  
   }, 
   { 
-  	path: 'login', component:LoginComponentComponent
+  	path: 'login', component:LoginComponentComponent, data: { title: 'Welcome to login' }
   }, 
   {   
   	path: '**', component:PageNotFoundComponent
@@ -23,6 +23,6 @@ export const appRoutingProviders: any[] = [
 ];
 
 export const routing = RouterModule.forRoot( 
-	routes,    
-	{ enableTracing: true } 
+	routes
+	//{ enableTracing: true } 
 );

@@ -18,15 +18,18 @@ export class HomeComponentComponent implements OnInit {
 	itemSubTestItem: FirebaseListObservable<any[]>;   
 	arrayValue: FirebaseObjectObservable<any>;    
 
+	listItems: any[] = [];
+
 	constructor(private db:AngularFireDatabase) { 
-		this.items = db.list('/items');     
-		this.name = db.object('/name');        
-		this.name.update({ first_name: 'Markie'});   
-		this.name.update({ last_name: 'Boribor'});     
-		this.name.update({ middle_name: 'Babon'});            
 	}       
 
-	ngOnInit() {}
+	ngOnInit() { 
+		this.items = this.db.list('/items');     
+		this.name = this.db.object('/name');        
+		this.name.update({ first_name: 'Markie'});   
+		this.name.update({ last_name: 'Boribor'});     
+		this.name.update({ middle_name: 'Babon'});        
+	}
 
 	deleteName() { 
 		this.name.remove();
