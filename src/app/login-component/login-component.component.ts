@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';   
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, Route } from '@angular/router';   
+import { Observable } from 'rxjs/Observable';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';    
+import {NgForm} from '@angular/forms';   
+import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 
 @Component({
   selector: 'app-login-component',
@@ -9,19 +14,38 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class LoginComponentComponent implements OnInit {
 
   sub: any[] = [];    
-  title: string = "";
+  title: string = "";     
 
-  constructor(   
- 	private route: ActivatedRoute,
-  	private router: Router
-  ) {}
+  user: Observable<firebase.User>;    
+
+  constructor(private storage: LocalStorageService,  private activatedRoute: ActivatedRoute, private router: Router, public afAuth: AngularFireAuth) {    
+  	this.user = afAuth.authState;
+  }
 
   ngOnInit() {   
-	
-	this.route.data.subscribe(data => {     
+	this.activatedRoute.data.subscribe(data => {     
 		this.title = data.title;
+	});        
+
+	this.user.subscribe(userData => {    
+		console.log(userData);
 	});     
-  
+  }              
+
+  login() {
+    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((data) => { 
+    	console.log("Lets navigate");      
+    	console.log(data);                   
+    	this.storage.store('userData', data);
+    	this.router.navigateByUrl("/");
+    });
   }
+
+  logout() {
+    this.afAuth.auth.signOut();   
+    this.router.navigateByUrl("/login");
+  }    
+
+
 
 }

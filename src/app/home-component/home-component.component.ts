@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';   
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';       
-import {NgForm} from '@angular/forms'; 
+import {NgForm} from '@angular/forms';   
+import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 
 @Component({
   selector: 'app-home-component',
@@ -20,7 +21,7 @@ export class HomeComponentComponent implements OnInit {
 
 	listItems: any[] = [];
 
-	constructor(private db:AngularFireDatabase) { 
+	constructor(private storage: LocalStorageService, private db:AngularFireDatabase) { 
 	}       
 
 	ngOnInit() { 
@@ -28,7 +29,9 @@ export class HomeComponentComponent implements OnInit {
 		this.name = this.db.object('/name');        
 		this.name.update({ first_name: 'Markie'});   
 		this.name.update({ last_name: 'Boribor'});     
-		this.name.update({ middle_name: 'Babon'});        
+		this.name.update({ middle_name: 'Babon'});             
+
+		console.log(this.storage.retrieve('userData'));
 	}
 
 	deleteName() { 

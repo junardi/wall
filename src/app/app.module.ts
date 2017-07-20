@@ -6,13 +6,13 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { firebaseConfig } from './../environments/firebase.config';   
-
 import { AppComponent } from './app.component';   
 import { KeysPipe } from './keys.pipe';
 import { HomeComponentComponent } from './home-component/home-component.component';    
 import { routing, appRoutingProviders } from './app.routes';
 import { LoginComponentComponent } from './login-component/login-component.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component'; 
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';        
+import { Ng2Webstorage } from 'ngx-webstorage';
 
 @NgModule({
   declarations: [   
@@ -27,7 +27,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFireDatabaseModule, 
     AngularFireAuthModule,    
-    routing
+    routing, 
+    Ng2Webstorage
   ],
   providers: [  
     appRoutingProviders
