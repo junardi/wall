@@ -12,7 +12,8 @@ import { HomeComponentComponent } from './home-component/home-component.componen
 import { routing, appRoutingProviders } from './app.routes';
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';        
-import { Ng2Webstorage } from 'ngx-webstorage';
+import { Ng2Webstorage } from 'ngx-webstorage';   
+import { AuthServiceService } from './auth-service.service';
 
 @NgModule({
   declarations: [   
@@ -31,7 +32,8 @@ import { Ng2Webstorage } from 'ngx-webstorage';
     Ng2Webstorage
   ],
   providers: [  
-    appRoutingProviders
+    appRoutingProviders, 
+    {provide: 'authService', useClass:AuthServiceService}
   ],
   bootstrap: [AppComponent]
 })

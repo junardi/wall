@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';   
+import { Component, OnInit, Inject } from '@angular/core';   
 import { Router, ActivatedRoute, ParamMap, Route } from '@angular/router';   
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -18,18 +18,27 @@ export class LoginComponentComponent implements OnInit {
 
   user: Observable<firebase.User>;    
 
-  constructor(private storage: LocalStorageService,  private activatedRoute: ActivatedRoute, private router: Router, public afAuth: AngularFireAuth) {    
+  constructor( 
+    private storage: LocalStorageService,   
+    private activatedRoute: ActivatedRoute,  
+    private router: Router,  
+    public afAuth: AngularFireAuth,     
+    @Inject('authService') private authService 
+  ) {    
   	this.user = afAuth.authState;
   }
 
-  ngOnInit() {   
-	this.activatedRoute.data.subscribe(data => {     
-		this.title = data.title;
-	});        
+  ngOnInit() {        
 
-	this.user.subscribe(userData => {    
-		console.log(userData);
-	});     
+    console.log(this.authService.sampleText);
+
+  	this.activatedRoute.data.subscribe(data => {     
+  		this.title = data.title;
+  	});        
+
+  	this.user.subscribe(userData => {    
+  		console.log(userData);
+  	});     
   }              
 
   login() {
