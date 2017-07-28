@@ -14,11 +14,14 @@ import { LoginComponentComponent } from './login-component/login-component.compo
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';        
 import { Ng2Webstorage } from 'ngx-webstorage';   
 import { AuthServiceService } from './auth-service.service';
+import { PostComponentComponent } from './post-component/post-component.component';
+import { OverviewComponentComponent } from './overview-component/overview-component.component';
+import { SpecsComponentComponent } from './specs-component/specs-component.component';
 
 @NgModule({
   declarations: [   
     AppComponent, 
-    KeysPipe, HomeComponentComponent, LoginComponentComponent, PageNotFoundComponent
+    KeysPipe, HomeComponentComponent, LoginComponentComponent, PageNotFoundComponent, PostComponentComponent, OverviewComponentComponent, SpecsComponentComponent
   ],
   imports: [
     BrowserModule, 

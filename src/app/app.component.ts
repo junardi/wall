@@ -1,10 +1,4 @@
-import { Component, Input } from '@angular/core';    
-import {NgForm} from '@angular/forms';    
-
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';   
-import { Observable } from 'rxjs/Observable';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+import { Component, Input, Inject } from '@angular/core';    
 
 @Component({
   selector: 'app-root',
@@ -13,12 +7,13 @@ import * as firebase from 'firebase/app';
 })
 export class AppComponent {
   
-  constructor(private router: Router, public afAuth: AngularFireAuth) {                
+  constructor(          
+  	@Inject('authService') private authService    
+  ) {                
   }    
 
-  processLogout() { 
-    this.afAuth.auth.signOut();   
-    this.router.navigateByUrl("/login");
+  processLogout() {  
+  	this.authService.logout();
   }
 
 }

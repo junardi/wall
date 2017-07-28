@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';   
+import { Component, OnInit, Inject } from '@angular/core';   
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';       
 import {NgForm} from '@angular/forms';   
-import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 
 @Component({
   selector: 'app-home-component',
@@ -10,18 +9,18 @@ import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 })
 export class HomeComponentComponent implements OnInit {
 
-	itemName = "Test Name"; 
+	itemName = "name"; 
 	itemValue ="Test Value";    
 
 	title = 'Visitor';         
 	items: FirebaseListObservable<any[]>;   
 	name: FirebaseObjectObservable<any>;          
 	itemSubTestItem: FirebaseListObservable<any[]>;   
-	arrayValue: FirebaseObjectObservable<any>;    
-
-	listItems: any[] = [];
-
-	constructor(private storage: LocalStorageService, private db:AngularFireDatabase) { 
+   
+	constructor( 
+		private db:AngularFireDatabase, 
+		@Inject('authService') private authService  
+	) { 
 	}       
 
 	ngOnInit() { 
@@ -31,7 +30,7 @@ export class HomeComponentComponent implements OnInit {
 		this.name.update({ last_name: 'Boribor'});     
 		this.name.update({ middle_name: 'Babon'});             
 
-		console.log(this.storage.retrieve('userData'));
+		console.log(this.authService.getUserData());
 	}
 
 	deleteName() { 
