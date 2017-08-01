@@ -17,11 +17,12 @@ import { AuthServiceService } from './auth-service.service';
 import { PostComponentComponent } from './post-component/post-component.component';
 import { OverviewComponentComponent } from './overview-component/overview-component.component';
 import { SpecsComponentComponent } from './specs-component/specs-component.component';
+import { DefaultComponentComponent } from './default-component/default-component.component';
 
 @NgModule({
   declarations: [   
     AppComponent, 
-    KeysPipe, HomeComponentComponent, LoginComponentComponent, PageNotFoundComponent, PostComponentComponent, OverviewComponentComponent, SpecsComponentComponent
+    KeysPipe, HomeComponentComponent, LoginComponentComponent, PageNotFoundComponent, PostComponentComponent, OverviewComponentComponent, SpecsComponentComponent, DefaultComponentComponent
   ],
   imports: [
     BrowserModule, 

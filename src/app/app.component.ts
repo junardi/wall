@@ -7,14 +7,7 @@ import { Component, Input, Inject } from '@angular/core';
 })
 export class AppComponent {
   
-  constructor(          
-  	@Inject('authService') private authService    
-  ) {                
-  }    
-
-  processLogout() {  
-  	this.authService.logout();
-  }
+  constructor() {}    
 
 }
 
