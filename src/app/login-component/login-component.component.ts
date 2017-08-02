@@ -1,4 +1,5 @@
-import { Component, OnInit, Inject } from '@angular/core';   
+import { Component, OnInit, Inject } from '@angular/core';        
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-login-component',
@@ -10,12 +11,15 @@ export class LoginComponentComponent implements OnInit {
   inLogin = true;
 
   constructor(    
-    @Inject('authService') private authService 
+    @Inject('authService') private authService, 
+    private router: Router 
   ) {    
   }
 
   ngOnInit() {          
-    console.log(this.authService.getUserData());
+    if(this.authService.getUserData() !== null) { 
+      this.router.navigateByUrl("/wall");
+    }   
   }              
 
   login() { 

@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';   
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';       
-import {NgForm} from '@angular/forms';   
+import {NgForm} from '@angular/forms';       
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-home-component',
@@ -19,18 +20,22 @@ export class HomeComponentComponent implements OnInit {
    
 	constructor( 
 		private db:AngularFireDatabase, 
-		@Inject('authService') private authService  
+		@Inject('authService') private authService, 
+		private router: Router
 	) { 
 	}       
 
 	ngOnInit() { 
+		
+		if(this.authService.getUserData() === null) { 
+			this.router.navigateByUrl("/login");
+		}        
+
 		this.items = this.db.list('/items');     
 		this.name = this.db.object('/name');        
 		this.name.update({ first_name: 'Markie'});   
 		this.name.update({ last_name: 'Boribor'});     
-		this.name.update({ middle_name: 'Babon'});             
-
-		console.log(this.authService.getUserData());
+		this.name.update({ middle_name: 'Babon'});             		
 	}
 
 	deleteName() { 

@@ -12,7 +12,10 @@ export class DefaultComponentComponent implements OnInit {
   ) {                
   }   
 
-  ngOnInit() {
+  ngOnInit() {    
+    //console.log(this.authService.getUserData());             
+    //console.log(this.authService.user);        
+    //this.authService.user.subscribe(data => console.log(data));  
   }    
 
   processLogout() {  

@@ -18,11 +18,12 @@ import { PostComponentComponent } from './post-component/post-component.componen
 import { OverviewComponentComponent } from './overview-component/overview-component.component';
 import { SpecsComponentComponent } from './specs-component/specs-component.component';
 import { DefaultComponentComponent } from './default-component/default-component.component';
+import { WallComponentComponent } from './wall-component/wall-component.component';
 
 @NgModule({
   declarations: [   
     AppComponent, 
-    KeysPipe, HomeComponentComponent, LoginComponentComponent, PageNotFoundComponent, PostComponentComponent, OverviewComponentComponent, SpecsComponentComponent, DefaultComponentComponent
+    KeysPipe, HomeComponentComponent, LoginComponentComponent, PageNotFoundComponent, PostComponentComponent, OverviewComponentComponent, SpecsComponentComponent, DefaultComponentComponent, WallComponentComponent
   ],
   imports: [
     BrowserModule, 

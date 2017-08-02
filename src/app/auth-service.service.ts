@@ -21,9 +21,8 @@ export class AuthServiceService {
 
  	login() {
 	    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((data) => {              
-	    	console.log(data);
 	    	this.storage.store('userData', data);
-	    	this.router.navigateByUrl("/home");
+	    	this.router.navigateByUrl("/wall");
 	    });
 	}         
 
