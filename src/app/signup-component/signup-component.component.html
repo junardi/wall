@@ -1,0 +1,60 @@
+<div class="container">
+
+	<div class="row">
+	    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+	    	<form role="form" #formData="ngForm" (ngSubmit)="signup(formData)">
+				<h3 class="omb_authTitle">Signup or <a routerLink="/login">Login</a></h3>
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+	                        <input [(ngModel)]="formData.first_name" #first_name="ngModel" required type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1">
+							<p class="errorMsg" *ngIf="first_name.errors?.required">Required</p>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+							<input [(ngModel)]="formData.last_name" #last_name="ngModel" [rangeLength]="[5, 9]" required type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2">
+							<p class="errorMsg" *ngIf="last_name.errors?.rangeLength">Limited to 5 or 9 texts</p>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<input [(ngModel)]="formData.mobile_number" required type="text" name="mobile_number" id="mobile_number" class="form-control input-lg" placeholder="Mobile No." tabindex="3">
+					<p class="errorMsg">Sample Error</p>
+				</div>
+				<div class="form-group">
+					<input [(ngModel)]="formData.email" required type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">
+					<p class="errorMsg">Sample Error</p>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+							<input [(ngModel)]="formData.password" required type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
+							<p class="errorMsg">Sample Error</p>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+							<input [(ngModel)]="formData.password_confirmation" required type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
+							<p class="errorMsg">Sample Error</p>
+						</div>
+					</div>
+				</div>
+				<div class="row agreeContainer">
+					<div class="col-xs-4 col-sm-3 col-md-3">
+						<span class="button-checkbox">
+							<label class="checkbox"><input (ngModel)="formData.agree" type="checkbox" name="agree" class="btn btn-primary" data-dismiss="modal">I Agree</label>
+						</span>
+					</div>
+					<div class="col-xs-8 col-sm-9 col-md-9">
+						 By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
+					</div>
+				</div>
+				<div class="row registerButtonContainer">
+					<div class="col-xs-12"><input type="submit" [disabled]="!formData.valid" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+				</div>
+			</form>
+		</div>
+	</div> <!-- end row -->   
+
+</div> <!-- end container -->

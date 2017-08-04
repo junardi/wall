@@ -19,11 +19,13 @@ import { OverviewComponentComponent } from './overview-component/overview-compon
 import { SpecsComponentComponent } from './specs-component/specs-component.component';
 import { DefaultComponentComponent } from './default-component/default-component.component';
 import { WallComponentComponent } from './wall-component/wall-component.component';
+import { SignupComponentComponent } from './signup-component/signup-component.component';   
+import { CustomFormsModule } from 'ng2-validation';
 
 @NgModule({
   declarations: [   
     AppComponent, 
-    KeysPipe, HomeComponentComponent, LoginComponentComponent, PageNotFoundComponent, PostComponentComponent, OverviewComponentComponent, SpecsComponentComponent, DefaultComponentComponent, WallComponentComponent
+    KeysPipe, HomeComponentComponent, LoginComponentComponent, PageNotFoundComponent, PostComponentComponent, OverviewComponentComponent, SpecsComponentComponent, DefaultComponentComponent, WallComponentComponent, SignupComponentComponent
   ],
   imports: [
     BrowserModule, 
@@ -34,7 +36,8 @@ import { WallComponentComponent } from './wall-component/wall-component.componen
     AngularFireDatabaseModule, 
     AngularFireAuthModule,    
     routing, 
-    Ng2Webstorage
+    Ng2Webstorage, 
+    CustomFormsModule
   ],
   providers: [  
     appRoutingProviders, 

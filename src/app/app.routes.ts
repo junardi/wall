@@ -6,7 +6,8 @@ import { PostComponentComponent } from './post-component/post-component.componen
 import { OverviewComponentComponent } from './overview-component/overview-component.component';      
 import { SpecsComponentComponent } from './specs-component/specs-component.component';    
 import { DefaultComponentComponent } from './default-component/default-component.component';     
-import { WallComponentComponent } from './wall-component/wall-component.component';
+import { WallComponentComponent } from './wall-component/wall-component.component';      
+import { SignupComponentComponent } from './signup-component/signup-component.component';
 
 export const routes: Routes = [     
   { 
@@ -19,6 +20,9 @@ export const routes: Routes = [
   },            
   {   
     path: 'login', component:LoginComponentComponent
+  },       
+  { 
+    path: 'signup', component:SignupComponentComponent 
   },   
   {   
   	path: '**', component:PageNotFoundComponent

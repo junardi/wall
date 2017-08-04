@@ -1,0 +1,17 @@
+.omb_authTitle {
+    text-align: center;
+	line-height: 300%;
+}    
+
+.registerButtonContainer { 
+	margin-top: 30px;
+}    
+
+.agreeContainer .checkbox { 
+	margin-left: 22px;
+}     
+
+.errorMsg { 
+	color: red;   
+	padding: 5px 10px;
+}
