@@ -8,35 +8,35 @@
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
 	                        <input [(ngModel)]="formData.first_name" #first_name="ngModel" required type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1">
-							<p class="errorMsg" *ngIf="first_name.errors?.required">Required</p>
+							<!-- <p class="errorMsg" *ngIf="first_name.errors?.required">Required</p> -->
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
 							<input [(ngModel)]="formData.last_name" #last_name="ngModel" [rangeLength]="[5, 9]" required type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2">
-							<p class="errorMsg" *ngIf="last_name.errors?.rangeLength">Limited to 5 or 9 texts</p>
+							<!-- <p class="errorMsg" *ngIf="last_name.errors?.rangeLength">Limited to 5 or 9 texts</p> -->
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
-					<input [(ngModel)]="formData.mobile_number" required type="text" name="mobile_number" id="mobile_number" class="form-control input-lg" placeholder="Mobile No." tabindex="3">
-					<p class="errorMsg">Sample Error</p>
+					<input [(ngModel)]="formData.mobile_number" #mobile_number="ngModel" [range]="[11, 11]" number required type="text" name="mobile_number" id="mobile_number" class="form-control input-lg" placeholder="Mobile No." tabindex="3">
+					<p class="errorMsg" *ngIf="password_confirmation.errors?.range || password_confirmation.errors?.number">Must contain 11 numbers</p>
 				</div>
 				<div class="form-group">
-					<input [(ngModel)]="formData.email" required type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">
-					<p class="errorMsg">Sample Error</p>
+					<input [(ngModel)]="formData.email" #email="ngModel" required type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">
+					<!-- <p class="errorMsg">Sample Error</p> -->
 				</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
-							<input [(ngModel)]="formData.password" required type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
-							<p class="errorMsg">Sample Error</p>
+							<input [(ngModel)]="formData.password" #password="ngModel" required type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
+							<!-- <p class="errorMsg">Sample Error</p> -->
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
-							<input [(ngModel)]="formData.password_confirmation" required type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
-							<p class="errorMsg">Sample Error</p>
+							<input [(ngModel)]="formData.password_confirmation" #password_confirmation="ngModel" [equalTo]="password" required type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
+							<p class="errorMsg" *ngIf="password_confirmation.errors?.equalTo">It must be equal to password</p>
 						</div>
 					</div>
 				</div>

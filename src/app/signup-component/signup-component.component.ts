@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';         
 import { AngularFireAuth } from 'angularfire2/auth';  
 import { CustomFormsModule } from 'ng2-validation';     
-import { FormsModule } from '@angular/forms';
+//import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-signup-component',
